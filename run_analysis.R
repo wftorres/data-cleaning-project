@@ -9,21 +9,24 @@
        path2files <- "./assignment/UCI HAR Dataset/"
        
        ## The slowest part of the program is reading the large test and train measurement files
-       ## The following technique improves performance http://www.biostat.jhsph.edu/~rpeng/docs/R-large-tables.html
+       ## The following technique improves performance by determining the column classes with a small
+       ## data subset and reading the full subset using the determined classes
+       ## http://www.biostat.jhsph.edu/~rpeng/docs/R-large-tables.html
+       ## We also take advantage of the fact that the test and train data structures are identical (per the README) 
        tab5rows <- read.table(paste(path2files,"test/X_test.txt", sep = ""),header=FALSE,nrows=5)
        classes <- sapply(tab5rows, class)
-       
-       
-       
        measuredf <- read.table(paste(path2files,"test/X_test.txt", sep = ""), header = FALSE, colClasses = classes)
-       activitydf <- read.table(paste(path2files,"test/Y_test.txt", sep = ""))
-       subjectsdf <- read.table(paste(path2files,"test/subject_test.txt", sep = ""))
-       
-       ## From the data dictionary for the UCI HAR Dataset we know that the train data has
-       ## the same structure, therefore we can directly bind the train datasets when reading for efficiency
        measuredf <- rbind(measuredf,read.table(paste(path2files,"train/X_train.txt", sep = ""), header = FALSE, colClasses = classes))
-       activitydf <- rbind(activitydf,read.table(paste(path2files,"train/Y_train.txt", sep = "")))
-       subjectsdf <- rbind(subjectsdf,read.table(paste(path2files,"train/subject_train.txt", sep = "")))
+       
+       tab5rows <- read.table(paste(path2files,"test/Y_test.txt", sep = ""),header=FALSE,nrows=5)
+       classes <- sapply(tab5rows, class)
+       activitydf <- read.table(paste(path2files,"test/Y_test.txt", sep = ""), header = FALSE, colClasses = classes)
+       activitydf <- rbind(activitydf,read.table(paste(path2files,"train/Y_train.txt", sep = ""), header = FALSE, colClasses = classes))
+
+       tab5rows <- read.table(paste(path2files,"test/Y_test.txt", sep = ""),header=FALSE,nrows=5)
+       classes <- sapply(tab5rows, class)
+       subjectsdf <- read.table(paste(path2files,"test/subject_test.txt", sep = ""), header = FALSE, colClasses = classes)
+       subjectsdf <- rbind(subjectsdf,read.table(paste(path2files,"train/subject_train.txt", sep = ""), header = FALSE, colClasses = classes))
        
        ## we now have three dataframes combining all the test and training data measurements, subjects and activities
        
