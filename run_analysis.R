@@ -83,11 +83,22 @@
        ## **********************************************************************************************************
        ## 4. Appropriately labels the data set with descriptive variable names. 
        ##
-       ## Since we renamed the columns of the measuredf taking the variable names in the last instruction of step 2, this is already
-       ## done.
+       ## Since we renamed the columns of the measuredf taking the variable names in the last instruction of step 2, 
+       ## variable names are already pretty descriptive, however we will do some transformations to comply with the
+       ## exercise
        ## 
-       ## usedcolnames <- colnames(measuredf)
-       ## usedcolnames <- sub('Acc', ' Acceleration', usedcolnames)
+        usedcolnames <- colnames(measuredf)
+        usedcolnames <- sub('Acc', 'Accelerometer', usedcolnames)
+        usedcolnames <- sub('Mag', 'Magnitude', usedcolnames)
+        usedcolnames <- sub('Gyro', 'Gyrometer', usedcolnames)
+        usedcolnames <- sub('X', 'X-Axis', usedcolnames)
+        usedcolnames <- sub('Y', 'Y-Axis', usedcolnames)
+        usedcolnames <- sub('Z', 'Z-Axis', usedcolnames)
+        usedcolnames <- sub('f', 'frequency', usedcolnames)
+        usedcolnames <- sub('tBody', 'rawBody', usedcolnames)
+        usedcolnames <- sub('tGravity', 'rawGravity', usedcolnames)
+        colnames(measuredf) <- usedcolnames
+        
        ## **********************************************************************************************************
        ## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable 
        ## for each activity and each subject.
