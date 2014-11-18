@@ -13,17 +13,17 @@
        ## data subset and reading the full subset using the determined classes
        ## http://www.biostat.jhsph.edu/~rpeng/docs/R-large-tables.html
        ## We also take advantage of the fact that the test and train data structures are identical (per the README) 
-       tab5rows <- read.table(paste(path2files,"test/X_test.txt", sep = ""),header=FALSE,nrows=5)
+       tab5rows <- read.table(paste(path2files,"test/X_test.txt", sep = ""), header=FALSE, nrows=5)
        classes <- sapply(tab5rows, class)
        measuredf <- read.table(paste(path2files,"test/X_test.txt", sep = ""), header = FALSE, colClasses = classes)
        measuredf <- rbind(measuredf,read.table(paste(path2files,"train/X_train.txt", sep = ""), header = FALSE, colClasses = classes))
        
-       tab5rows <- read.table(paste(path2files,"test/Y_test.txt", sep = ""),header=FALSE,nrows=5)
+       tab5rows <- read.table(paste(path2files,"test/Y_test.txt", sep = ""), header=FALSE, nrows=5)
        classes <- sapply(tab5rows, class)
        activitydf <- read.table(paste(path2files,"test/Y_test.txt", sep = ""), header = FALSE, colClasses = classes)
        activitydf <- rbind(activitydf,read.table(paste(path2files,"train/Y_train.txt", sep = ""), header = FALSE, colClasses = classes))
 
-       tab5rows <- read.table(paste(path2files,"test/Y_test.txt", sep = ""),header=FALSE,nrows=5)
+       tab5rows <- read.table(paste(path2files,"test/subject_test.txt", sep = ""), header=FALSE, nrows=5)
        classes <- sapply(tab5rows, class)
        subjectsdf <- read.table(paste(path2files,"test/subject_test.txt", sep = ""), header = FALSE, colClasses = classes)
        subjectsdf <- rbind(subjectsdf,read.table(paste(path2files,"train/subject_train.txt", sep = ""), header = FALSE, colClasses = classes))
