@@ -8,13 +8,20 @@
       ## First, we read the test dataset
        path2files <- "./assignment/UCI HAR Dataset/"
        
-       measuredf <- read.table(paste(path2files,"test/X_test.txt", sep = ""))
+       ## The slowest part of the program is reading the large test and train measurement files
+       ## The following technique improves performance http://www.biostat.jhsph.edu/~rpeng/docs/R-large-tables.html
+       tab5rows <- read.table(paste(path2files,"test/X_test.txt", sep = ""),header=FALSE,nrows=5)
+       classes <- sapply(tab5rows, class)
+       
+       
+       
+       measuredf <- read.table(paste(path2files,"test/X_test.txt", sep = ""), header = FALSE, colClasses = classes)
        activitydf <- read.table(paste(path2files,"test/Y_test.txt", sep = ""))
        subjectsdf <- read.table(paste(path2files,"test/subject_test.txt", sep = ""))
        
        ## From the data dictionary for the UCI HAR Dataset we know that the train data has
        ## the same structure, therefore we can directly bind the train datasets when reading for efficiency
-       measuredf <- rbind(measuredf,read.table(paste(path2files,"train/X_train.txt", sep = "")))
+       measuredf <- rbind(measuredf,read.table(paste(path2files,"train/X_train.txt", sep = ""), header = FALSE, colClasses = classes))
        activitydf <- rbind(activitydf,read.table(paste(path2files,"train/Y_train.txt", sep = "")))
        subjectsdf <- rbind(subjectsdf,read.table(paste(path2files,"train/subject_train.txt", sep = "")))
        
