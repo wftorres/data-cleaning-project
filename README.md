@@ -1,4 +1,6 @@
 data-cleaning-project
 =====================
 
-Project course for the Getting and Cleaning data course
+Course Project for the Getting and Cleaning Data course
+
+
