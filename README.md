@@ -1,16 +1,16 @@
-#Data Cleaning Course Project
-##README
+###Data Cleaning Course Project
+####README
 =====================
-Course Project for the Getting and Cleaning Data course
+####Course Project for the Getting and Cleaning Data course
 =====================
-Fernando Torres
+#####Fernando Torres
 =====================
 
 The assignment was to take two data sets for test and training data captured by data collected from the accelerometers from the Samsung Galaxy S smartphone while the experiment subjects performed different activities, combine them and perform several transformations in order to produce a tidy data set.
 
 A script called run_analysis was developed to transform the data sources into the tidy set. Rather than using functions, which would have produced a more compact and simpler script, the code was developed entirely within the script to increase readability by the graders.
 
-The script assumes the dataset is stored locally. A variable called *path2fies* has been created to identify the folder where the dataset is stored. It's being manually assigned in the script.
+The script assumes the dataset is stored locally. A variable called **path2fies** has been created to identify the folder where the dataset is stored. It's being manually assigned in the script.
 
 The steps to transform the data set were as follows:
 
