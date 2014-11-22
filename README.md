@@ -1,8 +1,7 @@
-###Data Cleaning Course Project
-####README
+##Data Cleaning Course Project
+###README
 =====================
 ####Course Project for the Getting and Cleaning Data course
-=====================
 #####Fernando Torres
 =====================
 
